@@ -118,11 +118,11 @@ public class WifiService {
     /**
      * limit 개의 Wi-Fi 정보를 사용자 현 위치 기준 가까운 순으로 정렬해 가져옴
      * @param limit 가져올 Wi-Fi 개수 최댓값
-     * @param userLnt 사용자 입력 경도
      * @param userLat 사용자 입력 위도
+     * @param userLnt 사용자 입력 경도
      * @return lnt, lat를 기준으로 가장 가까운 Wi-Fi 정보를 최대 limit 개 반환
      */
-    public ArrayList<WifiDTO> getWifi(int limit, double userLnt, double userLat) {
+    public ArrayList<WifiDTO> getWifi(int limit, double userLat, double userLnt) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -136,10 +136,7 @@ public class WifiService {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                System.out.println("???");
                 String manageNo = rs.getString("manage_no");
-                System.out.println("manageNo: " + manageNo);
-
                 String district = rs.getString("district");
                 String wifiName = rs.getString("wifi_name");
                 String address = rs.getString("address");
@@ -164,11 +161,6 @@ public class WifiService {
 
 
                 wifiList.add(wifi);
-
-                System.out.println("manageNo: " + manageNo);
-                System.out.println("wifiName: " + wifiName);
-                System.out.println("lnt: " + lnt);
-                System.out.println("lat: " + lat);
             }
 
         } catch (SQLException e) {
