@@ -30,7 +30,7 @@ public class LoadWifi extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         if (this.totalDataCount == 0) {
-            out.println("<h1>와이파이 정보를 저장하지 못했습니다. 다시 시도해주세요.</h1>");
+            out.println("<h1>이미 와이파이 정보가 저장되어 있거나 와이파이 정보를 저장하지 못했습니다. 다시 시도해주세요.</h1>");
         } else {
             out.println("<h1>" + this.totalDataCount + "개의 와이파이 정보를 성공적으로 저장했습니다.</h1>");
         }
