@@ -1,3 +1,6 @@
+<%@ page import="com.oxahex.wifinearme.service.WifiService" %>
+<%@ page import="com.oxahex.wifinearme.dto.WifiDTO" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -45,6 +48,40 @@
     <th>Y좌표</th>
     <th>작업일자</th>
   </tr>
+
+  <%!
+    WifiService wifiService = new WifiService();
+    ArrayList<WifiDTO> wifiList = wifiService.getWifi(20, 0.0, 0.0);
+    int listSize = wifiList.size();
+  %>
+
+  <% if (listSize == 0) { %>
+    <tr><td colspan="17">와이파이 정보를 가져온 후 실행해주세요.</td></tr>
+  <% } else { %>
+    <tr>
+  <% for (WifiDTO wifi : wifiList) { %>
+      <td>거리 계산 값</td>
+      <td><%= wifi.getManageNo()%></td>
+      <td><%= wifi.getDistrict()%></td>
+      <td><%= wifi.getWifiName()%></td>
+      <td><%= wifi.getAddress()%></td>
+      <td><%= wifi.getAddressDetail()%></td>
+      <td><%= wifi.getInstallFloor()%></td>
+      <td><%= wifi.getInstallType()%></td>
+      <td><%= wifi.getInstallAgency()%></td>
+      <td><%= wifi.getServiceType()%></td>
+      <td><%= wifi.getNetType()%></td>
+      <td><%= wifi.getInstallYear()%></td>
+      <td><%= wifi.getInstallPlace()%></td>
+      <td><%= wifi.getNetEnv()%></td>
+      <td><%= wifi.getLnt()%></td>
+      <td><%= wifi.getLat()%></td>
+      <td><%= wifi.getWorkDate()%></td>
+    </tr>
+ <%
+    }
+      }
+ %>
 
   <tr>
     <td>Alfreds Futterkiste</td>
