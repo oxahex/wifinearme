@@ -107,7 +107,7 @@ public class WifiService {
         double lat = Double.MAX_VALUE;
         String workDate = "";
         WifiDTO wifi = new WifiDTO(
-                manageNo, district, wifiName, address, addressDetail,
+                null, manageNo, district, wifiName, address, addressDetail,
                 installFloor, installType, installAgency, serviceType,
                 netType, installYear, installPlace, netEnv, lnt, lat, workDate
         );
@@ -129,13 +129,31 @@ public class WifiService {
         ArrayList<WifiDTO> wifiList = new ArrayList<>();
 
         try {
-            String sql = " select * from wifi limit ? ";
+            String sql = " select *,                                     "+"\n"
+                       + " (                                             "+"\n"
+                       + "   6371 *                                      "+"\n"
+                       + "     acos(                                     "+"\n"
+                       + "      cos(radians(?)) *                        "+"\n"
+                       + "      cos(radians(lat)) *                      "+"\n"
+                       + "      cos(radians(lnt) - radians(?)) +         "+"\n"
+                       + "      sin(radians(?)) *                        "+"\n"
+                       + "      sin(radians(lat))                        "+"\n"
+                       + "    )                                          "+"\n"
+                       + " ) as distance                                 "+"\n"
+                       + " from wifi                                     "+"\n"
+                       + " order by distance                             "+"\n"
+                       + " limit ?                                       ";
+
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, Integer.toString(limit));
+            pstmt.setString(1, Double.toString(userLat));
+            pstmt.setString(2, Double.toString(userLnt));
+            pstmt.setString(3, Double.toString(userLat));
+            pstmt.setString(4, Integer.toString(limit));
 
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
+                double distance = Math.round(rs.getDouble("distance") * 10000) / 10000.0;
                 String manageNo = rs.getString("manage_no");
                 String district = rs.getString("district");
                 String wifiName = rs.getString("wifi_name");
@@ -154,7 +172,7 @@ public class WifiService {
                 String workDate = rs.getString("work_date");
 
                 WifiDTO wifi = new WifiDTO(
-                        manageNo, district, wifiName, address, addressDetail,
+                        distance, manageNo, district, wifiName, address, addressDetail,
                         installFloor, installType, installAgency, serviceType,
                         netType, installYear, installPlace, netEnv, lnt, lat, workDate
                 );

@@ -66,6 +66,7 @@ public class OpenApiService {
                     String workDate = data.get("WORK_DTTM").getAsString();
 
                     wifiList.add(new WifiDTO(
+                            null,
                             manageNo,
                             district,
                             wifiName,

@@ -65,7 +65,7 @@
   <% } else { %>
     <tr>
   <% for (WifiDTO wifi : wifiList) { %>
-      <td>거리 계산 값</td>
+      <td><%=wifi.getDistance()%></td>
       <td><%=wifi.getManageNo()%></td>
       <td><%=wifi.getDistrict()%></td>
       <td><%=wifi.getWifiName()%></td>

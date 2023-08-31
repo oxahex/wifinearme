@@ -10,6 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class WifiDTO {
+    private Double distance;                    // 사용자 위치와의 거리
     private String manageNo;                    // X_SWIFI_MGR_NO           관리 번호
     private String district;                    // X_SWIFI_WRDOFC           자치구
     private String wifiName;                    // X_SWIFI_MAIN_NM          와이파이 이름
