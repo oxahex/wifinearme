@@ -146,7 +146,6 @@ public class OpenApiService {
      * @return Open API 전체 데이터 개수 반환
      */
     private int preFlight() {
-        System.out.println("preFlight 실행");
         int totalCount = 0;
         try {
             JsonObject json = requestHTTP(1, 1);
