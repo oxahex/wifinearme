@@ -1,4 +1,4 @@
-<%@ page import="com.oxahex.wifinearme.service.WifiService" %>
+        <%@ page import="com.oxahex.wifinearme.service.WifiService" %>
 <%@ page import="com.oxahex.wifinearme.dto.WifiDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -18,7 +18,7 @@
 </div>
 
 <div id="location-form" >
-  <form action="object_ok.jsp" name="getWifiForm">
+  <form action="/" name="getWifiForm">
     <label>
       <input id="lat" type="text" value="0.0" name="lat"/>
       <input id="lnt" type="text" value="0.0" name="lnt"/>
@@ -49,38 +49,43 @@
     <th>작업일자</th>
   </tr>
 
-  <%!
-    WifiService wifiService = new WifiService();
-    ArrayList<WifiDTO> wifiList = wifiService.getWifi(20, 0.0, 0.0);
-    int listSize = wifiList.size();
+  <%
+      String userLat = request.getParameter("lat");
+      String userLnt = request.getParameter("lnt");
+      double lat = userLat != null ? Double.parseDouble(userLat) : 0.0;
+      double lnt = userLnt != null ? Double.parseDouble(userLnt) : 0.0;
+
+      WifiService wifiService = new WifiService();
+      ArrayList<WifiDTO> wifiList = wifiService.getWifi(20, lat, lnt);
+      int listSize = wifiList.size();
   %>
 
-  <% if (listSize == 0) { %>
+    <% if (listSize == 0) { %>
     <tr><td colspan="17">와이파이 정보를 가져온 후 실행해주세요.</td></tr>
   <% } else { %>
     <tr>
   <% for (WifiDTO wifi : wifiList) { %>
       <td>거리 계산 값</td>
-      <td><%= wifi.getManageNo()%></td>
-      <td><%= wifi.getDistrict()%></td>
-      <td><%= wifi.getWifiName()%></td>
-      <td><%= wifi.getAddress()%></td>
-      <td><%= wifi.getAddressDetail()%></td>
-      <td><%= wifi.getInstallFloor()%></td>
-      <td><%= wifi.getInstallType()%></td>
-      <td><%= wifi.getInstallAgency()%></td>
-      <td><%= wifi.getServiceType()%></td>
-      <td><%= wifi.getNetType()%></td>
-      <td><%= wifi.getInstallYear()%></td>
-      <td><%= wifi.getInstallPlace()%></td>
-      <td><%= wifi.getNetEnv()%></td>
-      <td><%= wifi.getLnt()%></td>
-      <td><%= wifi.getLat()%></td>
-      <td><%= wifi.getWorkDate()%></td>
+      <td><%=wifi.getManageNo()%></td>
+      <td><%=wifi.getDistrict()%></td>
+      <td><%=wifi.getWifiName()%></td>
+      <td><%=wifi.getAddress()%></td>
+      <td><%=wifi.getAddressDetail()%></td>
+      <td><%=wifi.getInstallFloor()%></td>
+      <td><%=wifi.getInstallType()%></td>
+      <td><%=wifi.getInstallAgency()%></td>
+      <td><%=wifi.getServiceType()%></td>
+      <td><%=wifi.getNetType()%></td>
+      <td><%=wifi.getInstallYear()%></td>
+      <td><%=wifi.getInstallPlace()%></td>
+      <td><%=wifi.getNetEnv()%></td>
+      <td><%=wifi.getLnt()%></td>
+      <td><%=wifi.getLat()%></td>
+      <td><%=wifi.getWorkDate()%></td>
     </tr>
  <%
-    }
-      }
+         }
+     }
  %>
 
   <tr>
