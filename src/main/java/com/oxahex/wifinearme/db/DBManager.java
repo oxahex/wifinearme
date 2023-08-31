@@ -4,7 +4,9 @@ import java.sql.*;
 
 public class DBManager {
     private static final String JDBC_DRIVER = "org.sqlite.JDBC";
-    private static final String DB_FILE_PATH = "jdbc:sqlite::resource:wifinearme.db";
+
+    // TODO: 파일 패스를 이렇게 고정해두면, 다른 사람이 이 파일을 열었을 때 경로를 못찾지 않나? 해결 필요
+    private static final String DB_FILE_PATH = "jdbc:sqlite:/Users/hyesech/wifinearme/src/db/wifinearme.db";
 
     /**
      * Driver 로드
