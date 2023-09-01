@@ -13,15 +13,22 @@
 
 <div class="nav">
   <a href="/">홈</a>
-  <a href="/history">위치 히스토리 목록</a>
+  <a href="/history.jsp">위치 히스토리 목록</a>
   <a href="/load-wifi">Open API 와이파이 정보 가져오기</a>
 </div>
 
+<%
+  String userLat = request.getParameter("lat");
+  String userLnt = request.getParameter("lnt");
+  double lat = userLat != null ? Double.parseDouble(userLat) : 0.0;
+  double lnt = userLnt != null ? Double.parseDouble(userLnt) : 0.0;
+%>
+
 <div id="location-form" >
-  <form action="/" name="getWifiForm">
+  <form action="/save-history" name="getWifiForm">
     <label>
-      <input id="lat" type="text" value="0.0" name="lat"/>
-      <input id="lnt" type="text" value="0.0" name="lnt"/>
+      <input id="lat" type="text" value=<%=lat%> name="lat"/>
+      <input id="lnt" type="text" value=<%=lnt%> name="lnt"/>
     </label>
     <button type="button" id="getLocationBtn">내 위치 가져오기</button>
     <button type="submit" id="getNearestWifi">근처 WIFI 정보 가져오기</button>
@@ -30,7 +37,7 @@
 
 <table id="wifi">
   <tr>
-    <th>거리</th>
+    <th>거리(Km)</th>
     <th>관리번호</th>
     <th>자치구</th>
     <th>와이파이명</th>
@@ -50,11 +57,6 @@
   </tr>
 
   <%
-      String userLat = request.getParameter("lat");
-      String userLnt = request.getParameter("lnt");
-      double lat = userLat != null ? Double.parseDouble(userLat) : 0.0;
-      double lnt = userLnt != null ? Double.parseDouble(userLnt) : 0.0;
-
       WifiService wifiService = new WifiService();
       ArrayList<WifiDTO> wifiList = wifiService.getWifi(20, lat, lnt);
       int listSize = wifiList.size();
@@ -70,7 +72,7 @@
         <td><%=wifi.getDistance()%></td>
         <td><%=wifi.getManageNo()%></td>
         <td><%=wifi.getDistrict()%></td>
-        <td><%=wifi.getWifiName()%></td>
+        <td><a href="/detail.jsp?manageNo=<%=wifi.getManageNo()%>"><%=wifi.getWifiName()%></a></td>
         <td><%=wifi.getAddress()%></td>
         <td><%=wifi.getAddressDetail()%></td>
         <td><%=wifi.getInstallFloor()%></td>
