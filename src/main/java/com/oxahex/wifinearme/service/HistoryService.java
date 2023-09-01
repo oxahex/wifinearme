@@ -6,7 +6,6 @@ import com.oxahex.wifinearme.dto.HistoryDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class HistoryService {
@@ -22,23 +21,25 @@ public class HistoryService {
         int affected = 0;
 
         try {
-            String sql = " insert into history ( lat, lnt, view_datetime )"+"\n"
-                       + " values ( ?, ?, ? )                             ";
+            String sql = " insert into history ( lat, lnt, view_timestamp ) "+"\n"
+                       + " values ( ?, ?, ? )                              ";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setDouble(1, history.getLat());
             pstmt.setDouble(2, history.getLnt());
-            pstmt.setString(3, history.getViewDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+            pstmt.setTimestamp(3, history.getViewTimestamp());
 
             affected = pstmt.executeUpdate();
-
         } catch (SQLException e) {
             System.out.println("registerHistory: " + e.getMessage());
             e.printStackTrace();
             throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
         }
 
-        return affected == 0;
+        return affected == 1;
     }
 
     /**

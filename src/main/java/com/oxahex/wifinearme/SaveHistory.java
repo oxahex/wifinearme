@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @WebServlet(name = "SaveHistory", value = "/save-history")
 public class SaveHistory extends HttpServlet {
@@ -17,7 +17,7 @@ public class SaveHistory extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         double lat = Double.parseDouble(request.getParameter("lat"));
         double lnt = Double.parseDouble(request.getParameter("lnt"));
-        LocalDateTime now = LocalDateTime.now();
+        Timestamp now = new Timestamp(System.currentTimeMillis());
 
         HistoryDTO history = new HistoryDTO(null, lat, lnt, now);
 

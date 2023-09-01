@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @Getter
@@ -15,7 +15,7 @@ public class HistoryDTO {
     private Integer id;
     private double lat;
     private double lnt;
-    private LocalDateTime viewDateTime;
+    private Timestamp viewTimestamp;
 }
 
 /*
