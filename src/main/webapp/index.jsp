@@ -35,7 +35,7 @@
   </form>
 </div>
 
-<table id="wifi">
+<table id="default-table">
   <tr>
     <th>거리(Km)</th>
     <th>관리번호</th>
