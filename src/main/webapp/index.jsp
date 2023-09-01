@@ -1,4 +1,4 @@
-        <%@ page import="com.oxahex.wifinearme.service.WifiService" %>
+<%@ page import="com.oxahex.wifinearme.service.WifiService" %>
 <%@ page import="com.oxahex.wifinearme.dto.WifiDTO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
