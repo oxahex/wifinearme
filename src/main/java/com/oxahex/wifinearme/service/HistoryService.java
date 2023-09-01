@@ -3,9 +3,7 @@ package com.oxahex.wifinearme.service;
 import com.oxahex.wifinearme.db.DBManager;
 import com.oxahex.wifinearme.dto.HistoryDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class HistoryService {
@@ -43,11 +41,42 @@ public class HistoryService {
     }
 
     /**
-     * 유저의 모든 조회 내역을 가져옴
+     * 유저의 모든 조회 내역을 조회 일자 순으로 가져옴
      * @return 조회 내역을 ArrayList로 반환
      */
     public ArrayList<HistoryDTO> getHistory() {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
         ArrayList<HistoryDTO> historyList = new ArrayList<>();
+
+        try {
+            String sql = " select *                          "+"\n"
+                        + "from history                      "+"\n"
+                        + "order by view_timestamp desc";
+
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                double lat = rs.getDouble("lat");
+                double lnt = rs.getDouble("lnt");
+                Timestamp viewTimeStamp = new Timestamp(rs.getLong("view_timestamp"));
+
+                HistoryDTO history = new HistoryDTO(id, lat, lnt, viewTimeStamp);
+                historyList.add(history);
+            }
+        } catch (SQLException e) {
+            System.out.println("getHistory: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(rs);
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
 
         return historyList;
     }
