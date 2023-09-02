@@ -22,5 +22,17 @@
   <a href="/bookmark-group.jsp">즐겨찾기 그룹 관리</a>
 </div>
 
+<table id="default-table">
+  <tr>
+    <th>ID</th>
+    <th>북마크 이름</th>
+    <th>와이파이명</th>
+    <th>등록 일자</th>
+    <th>비고</th>
+  </tr>
+  <tr><td colspan="5">정보가 존재하지 않습니다.</td></tr>
+
+</table>
+
 </body>
 </html>
