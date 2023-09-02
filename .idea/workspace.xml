@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="chore: db 업데이트" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="JavaFXApplication" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2UjA8uPKFtfiDxeEmUDIaeD1hlI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hyesech/wifinearme/src/main/webapp/WEB-INF&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 파생 언어&quot;: [
+      &quot;SQLite&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 8.5.92" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.92" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="Gradle : com.oxahex : wifinearme-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="50e78b08-3110-41cc-813a-56c824acaf3e" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49500" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : com.oxahex : wifinearme-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="" />
+      <created>1693442463226</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693442463226</updated>
+      <workItem from="1693442464371" duration="201000" />
+      <workItem from="1693442676831" duration="282000" />
+      <workItem from="1693442985233" duration="25193000" />
+      <workItem from="1693527845728" duration="28855000" />
+    </task>
+    <task id="LOCAL-00001" summary="Set SQLite Database up&#10;&#10;DB 연결 객체 생성 및 제거 메서드 구현&#10;PreparedStatement, ResultSet 삭제 메서드 구현&#10;wifinearme 데이터베이스 파일 생성">
+      <option name="closed" value="true" />
+      <created>1693445509319</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693445509319</updated>
+    </task>
+    <task id="LOCAL-00002" summary=".idea file 수정">
+      <option name="closed" value="true" />
+      <created>1693445529302</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693445529302</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dependency 추가&#10;&#10;- lombok&#10;- okhttp3&#10;- gson">
+      <option name="closed" value="true" />
+      <created>1693445701519</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693445701519</updated>
+    </task>
+    <task id="LOCAL-00004" summary="index 페이지 작성&#10;&#10;- css 파일 작성&#10;- 기본 페이지 구성 골조 작업">
+      <option name="closed" value="true" />
+      <created>1693445948570</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693445948570</updated>
+    </task>
+    <task id="LOCAL-00005" summary="내 위치 경도, 위도 가져오기 기능 js 구현">
+      <option name="closed" value="true" />
+      <created>1693446008357</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693446008357</updated>
+    </task>
+    <task id="LOCAL-00006" summary="DB 생성 및 DB 연결 클래스 생성">
+      <option name="closed" value="true" />
+      <created>1693458541538</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693458541539</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Open API HTTP Request, Response 파싱">
+      <option name="closed" value="true" />
+      <created>1693458799104</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693458799104</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Wifi DTO 정의">
+      <option name="closed" value="true" />
+      <created>1693458815967</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693458815967</updated>
+    </task>
+    <task id="LOCAL-00009" summary="WifiService 기능 구현&#10;&#10;- wifi 데이터 리스트 전체를 wifi 테이블에 저장하는 기능&#10;- wifi 테이블 데이터를 가져오는 기능">
+      <option name="closed" value="true" />
+      <created>1693458933010</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693458933010</updated>
+    </task>
+    <task id="LOCAL-00010" summary="index 페이지 와이파이 데이터 로드&#10;&#10;- wifi table 데이터 존재 여부 확인&#10;- 존재하는 경우에 table 생성">
+      <option name="closed" value="true" />
+      <created>1693459017737</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693459017737</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Open API 가져오기 기능 추가&#10;&#10;- Open API 데이터 HTTP 요청&#10;- wifi 데이터 DB 저장 요청&#10;- 결과에 따라 다른 html 생성">
+      <option name="closed" value="true" />
+      <created>1693459153760</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693459153760</updated>
+    </task>
+    <task id="LOCAL-00012" summary="idea 파일 변경">
+      <option name="closed" value="true" />
+      <created>1693459165761</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693459165761</updated>
+    </task>
+    <task id="LOCAL-00013" summary="오류 원인 html 기재">
+      <option name="closed" value="true" />
+      <created>1693460582883</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693460582883</updated>
+    </task>
+    <task id="LOCAL-00014" summary="사용자 LAT, LNT 값 입력 연동">
+      <option name="closed" value="true" />
+      <created>1693464378772</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1693464378772</updated>
+    </task>
+    <task id="LOCAL-00015" summary="chore: 사용자 입력 위경도 파라미터 위치 변경">
+      <option name="closed" value="true" />
+      <created>1693464442959</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1693464442959</updated>
+    </task>
+    <task id="LOCAL-00016" summary="chore: 불필요한 출력 제거">
+      <option name="closed" value="true" />
+      <created>1693464461539</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1693464461539</updated>
+    </task>
+    <task id="LOCAL-00017" summary="사용자 위도, 경도 기반으로 가까운 Wi-Fi 데이터 가져오는 기능 구현">
+      <option name="closed" value="true" />
+      <created>1693469336620</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1693469336620</updated>
+    </task>
+    <task id="LOCAL-00018" summary="DB 상태에 따라 랜딩 페이지 문구 변경&#10;&#10;- wifi 테이블 데이터가 없는 경우, Open API 정보를 가져온 후 실행 메세지&#10;- 사용자 위도, 경도가 없는 경우, 위도 및 경도를 입력한 후 검색 메세지">
+      <option name="closed" value="true" />
+      <created>1693532589290</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1693532589290</updated>
+    </task>
+    <task id="LOCAL-00019" summary="TODO: Double, double 타입 혼용 가능한지 확인 필요">
+      <option name="closed" value="true" />
+      <created>1693537619546</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1693537619546</updated>
+    </task>
+    <task id="LOCAL-00020" summary="조회 시 위치 정보 저장 기능 구현&#10;&#10;- History DTO 생성&#10;- DB 에 history 테이블 생성&#10;- 조회 내역 저장 후 index 페이지로 리다이렉션 기능 추가">
+      <option name="closed" value="true" />
+      <created>1693541886128</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1693541886128</updated>
+    </task>
+    <task id="LOCAL-00021" summary="FIX: 위치 히스토리 DTO 조회일자 필드 변경&#10;&#10;- unix timestamp 기반으로 변경">
+      <option name="closed" value="true" />
+      <created>1693544027087</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1693544027087</updated>
+    </task>
+    <task id="LOCAL-00022" summary="FIX: 테이블 css id 값 수정&#10;&#10;- 넓은 범위를 포괄하도록 수정">
+      <option name="closed" value="true" />
+      <created>1693546593812</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1693546593812</updated>
+    </task>
+    <task id="LOCAL-00023" summary="CHORE: CSS 값 수정">
+      <option name="closed" value="true" />
+      <created>1693547670167</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1693547670167</updated>
+    </task>
+    <task id="LOCAL-00024" summary="위치 히스토리 조회 기능 구현&#10;&#10;- history 조회 페이지 생성&#10;- history 테이블 생성&#10;- history 조회 기능 구현">
+      <option name="closed" value="true" />
+      <created>1693547775457</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1693547775457</updated>
+    </task>
+    <task id="LOCAL-00025" summary="위치 히스토리 조회 기능 구현&#10;&#10;- history 조회 페이지 생성&#10;- history 테이블 생성&#10;- history 조회 기능 구현">
+      <option name="closed" value="true" />
+      <created>1693547846519</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1693547846519</updated>
+    </task>
+    <task id="LOCAL-00026" summary="위치 detail 조회 기능 구현&#10;&#10;- detail 조회 페이지 생성&#10;- 사용자가 마지막으로 구한 위경도 값 브라우저 쿠키로 저장&#10;- 위경도 기반 두 위치 사이의 거리 계산하는 util 클래스 구현">
+      <option name="closed" value="true" />
+      <created>1693628326022</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1693628326022</updated>
+    </task>
+    <task id="LOCAL-00027" summary="chore: 에디터 포맷팅 설정 변경으로 마지막 줄 제거되었음">
+      <option name="closed" value="true" />
+      <created>1693628355911</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1693628355911</updated>
+    </task>
+    <task id="LOCAL-00028" summary="chore: db 업데이트">
+      <option name="closed" value="true" />
+      <created>1693634595872</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1693634595872</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="dependency 추가&#10;&#10;- lombok&#10;- okhttp3&#10;- gson" />
+    <MESSAGE value="index 페이지 작성&#10;&#10;- css 파일 작성&#10;- 기본 페이지 구성 골조 작업" />
+    <MESSAGE value="내 위치 경도, 위도 가져오기 기능 js 구현" />
+    <MESSAGE value="DB 생성 및 DB 연결 클래스 생성" />
+    <MESSAGE value="Open API HTTP Request, Response 파싱" />
+    <MESSAGE value="Wifi DTO 정의" />
+    <MESSAGE value="WifiService 기능 구현&#10;&#10;- wifi 데이터 리스트 전체를 wifi 테이블에 저장하는 기능&#10;- wifi 테이블 데이터를 가져오는 기능" />
+    <MESSAGE value="index 페이지 와이파이 데이터 로드&#10;&#10;- wifi table 데이터 존재 여부 확인&#10;- 존재하는 경우에 table 생성" />
+    <MESSAGE value="Open API 가져오기 기능 추가&#10;&#10;- Open API 데이터 HTTP 요청&#10;- wifi 데이터 DB 저장 요청&#10;- 결과에 따라 다른 html 생성" />
+    <MESSAGE value="idea 파일 변경" />
+    <MESSAGE value="오류 원인 html 기재" />
+    <MESSAGE value="사용자 LAT, LNT 값 입력 연동" />
+    <MESSAGE value="chore: 사용자 입력 위경도 파라미터 위치 변경" />
+    <MESSAGE value="chore: 불필요한 출력 제거" />
+    <MESSAGE value="사용자 위도, 경도 기반으로 가까운 Wi-Fi 데이터 가져오는 기능 구현" />
+    <MESSAGE value="DB 상태에 따라 랜딩 페이지 문구 변경&#10;&#10;- wifi 테이블 데이터가 없는 경우, Open API 정보를 가져온 후 실행 메세지&#10;- 사용자 위도, 경도가 없는 경우, 위도 및 경도를 입력한 후 검색 메세지" />
+    <MESSAGE value="TODO: Double, double 타입 혼용 가능한지 확인 필요" />
+    <MESSAGE value="조회 시 위치 정보 저장 기능 구현&#10;&#10;- History DTO 생성&#10;- DB 에 history 테이블 생성&#10;- 조회 내역 저장 후 index 페이지로 리다이렉션 기능 추가" />
+    <MESSAGE value="FIX: 위치 히스토리 DTO 조회일자 필드 변경&#10;&#10;- unix timestamp 기반으로 변경" />
+    <MESSAGE value="FIX: 테이블 css id 값 수정&#10;&#10;- 넓은 범위를 포괄하도록 수정" />
+    <MESSAGE value="CHORE: CSS 값 수정" />
+    <MESSAGE value="위치 히스토리 조회 기능 구현&#10;&#10;- history 조회 페이지 생성&#10;- history 테이블 생성&#10;- history 조회 기능 구현" />
+    <MESSAGE value="위치 detail 조회 기능 구현&#10;&#10;- detail 조회 페이지 생성&#10;- 사용자가 마지막으로 구한 위경도 값 브라우저 쿠키로 저장&#10;- 위경도 기반 두 위치 사이의 거리 계산하는 util 클래스 구현" />
+    <MESSAGE value="chore: 에디터 포맷팅 설정 변경으로 마지막 줄 제거되었음" />
+    <MESSAGE value="chore: db 업데이트" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: db 업데이트" />
+  </component>
+</project>
