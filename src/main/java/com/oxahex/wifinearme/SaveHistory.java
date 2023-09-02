@@ -4,9 +4,7 @@ import com.oxahex.wifinearme.dto.HistoryDTO;
 import com.oxahex.wifinearme.service.HistoryService;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Timestamp;
 
@@ -24,8 +22,13 @@ public class SaveHistory extends HttpServlet {
         HistoryService historyService = new HistoryService();
         boolean historyUpdated = historyService.registerHistory(history);
 
-        if (historyUpdated) System.out.println("History 저장 성공");
-        else System.out.println("History 저장 실패");
+        if (historyUpdated) {
+            response.addCookie(new Cookie("lat", String.valueOf(lat)));
+            response.addCookie(new Cookie("lnt", String.valueOf(lnt)));
+            System.out.println("History 저장 성공");
+        } else {
+            System.out.println("History 저장 실패");
+        }
 
         response.sendRedirect("/?lat=" + lat + "&lnt=" + lnt);
     }

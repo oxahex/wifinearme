@@ -86,31 +86,53 @@ public class WifiService {
 
     /**
      * 특정 Wi-Fi 정보를 가져옴
-     * @param _manageNo Wi-Fi 관리 번호
+     * @param userManageNo Wi-Fi 관리 번호
      * @return 해당 Wi-Fi 정보
      */
-    public WifiDTO getWifi(String _manageNo) {
-        String manageNo = "";
-        String district = "";
-        String wifiName = "";
-        String address = "";
-        String addressDetail = "";
-        String installFloor = "";
-        String installType = "";
-        String installAgency = "";
-        String serviceType = "";
-        String netType = "";
-        String installYear = "";
-        String installPlace = "";
-        String netEnv = "";
-        double lnt = Double.MAX_VALUE;
-        double lat = Double.MAX_VALUE;
-        String workDate = "";
-        WifiDTO wifi = new WifiDTO(
-                null, manageNo, district, wifiName, address, addressDetail,
-                installFloor, installType, installAgency, serviceType,
-                netType, installYear, installPlace, netEnv, lnt, lat, workDate
-        );
+    public WifiDTO getWifi(String userManageNo) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        WifiDTO wifi = null;
+
+        try {
+            String sql = " select * from wifi where manage_no = ? ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userManageNo);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                wifi = new WifiDTO(
+                        null,
+                        rs.getString("manage_no"),
+                        rs.getString("district"),
+                        rs.getString("wifi_name"),
+                        rs.getString("address"),
+                        rs.getString("address_detail"),
+                        rs.getString("install_floor"),
+                        rs.getString("install_type"),
+                        rs.getString("install_agency"),
+                        rs.getString("service_type"),
+                        rs.getString("net_type"),
+                        rs.getString("install_year"),
+                        rs.getString("install_place"),
+                        rs.getString("net_env"),
+                        rs.getDouble("lnt"),
+                        rs.getDouble("lat"),
+                        rs.getString("work_date")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("getWifi: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(rs);
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
 
         return wifi;
     }
@@ -127,6 +149,12 @@ public class WifiService {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         ArrayList<WifiDTO> wifiList = new ArrayList<>();
+
+        /*
+            TODO: 여기서 sql에서 거리를 구하도록 해서 데이터를 가져오는 게 비용이 더 나은지?
+            아니면 DB에 저장된 테이블대로 가져오고, 여기서 값을 계산하면서 PriorityQueue 등으로
+            정렬하고 20개 잘라서 반환하는 것이 나은지?
+         */
 
         try {
             String sql = " select *,                                     "+"\n"
@@ -180,7 +208,6 @@ public class WifiService {
 
                 wifiList.add(wifi);
             }
-
         } catch (SQLException e) {
             System.out.println("getWifi: " + e.getMessage());
             e.printStackTrace();
@@ -188,6 +215,7 @@ public class WifiService {
         } finally {
             DBManager.closeConnection(pstmt);
             DBManager.closeConnection(rs);
+            DBManager.closeConnection(conn);
         }
 
         return wifiList;
