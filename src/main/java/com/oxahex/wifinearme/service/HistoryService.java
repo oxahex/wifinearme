@@ -87,7 +87,22 @@ public class HistoryService {
      * @return 삭제 성공 여부를 반환
      */
     public boolean deleteHistory(int userHistoryId) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        int affected = 0;
 
-        return false;
+        try {
+            String sql = " delete from history where id = ? ";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userHistoryId);
+
+            affected = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("deleteHistory: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+
+        return affected == 1;
     }
 }
