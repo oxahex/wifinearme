@@ -29,8 +29,10 @@ html {
 /**/
 #default-table {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: inherit;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 1rem;
 }
 
 #default-table td, #default-table th {
