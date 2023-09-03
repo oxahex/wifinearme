@@ -47,7 +47,7 @@ public class BookMarkGroupService {
         return affected == 1;
     }
 
-    public BookmarkGroupDTO getBookmarkGroup(int userId) {
+    public BookmarkGroupDTO getBookmarkGroup(int targetId) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -60,7 +60,7 @@ public class BookMarkGroupService {
                         +" where id = ?            ";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userId);
+            pstmt.setInt(1, targetId);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
@@ -126,23 +126,23 @@ public class BookMarkGroupService {
         return bookmarkGroupList;
     }
 
-    public boolean updateBookmarkGroup(int id, String name, int order, Timestamp updateTimestamp) {
+    public boolean updateBookmarkGroup(int targetId, String targetName, int targetOrder, Timestamp targetTime) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         int affected = 0;
 
         try {
-            if (isOrderDuplicated(order)) updateOrder(order);
+            if (isOrderDuplicated(targetId)) updateOrder(targetId);
 
             String sql = " update bookmark_group                                "+"\n"
                     +" set name = ?, view_order = ?, update_timestamp = ?       "+"\n"
                     +" where id = ?                                             ";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, name);
-            pstmt.setInt(2, order);
-            pstmt.setTimestamp(3, updateTimestamp);
-            pstmt.setInt(4, id);
+            pstmt.setString(1, targetName);
+            pstmt.setInt(2, targetOrder);
+            pstmt.setTimestamp(3, targetTime);
+            pstmt.setInt(4, targetId);
 
             affected = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -167,7 +167,7 @@ public class BookMarkGroupService {
      * @param userOrder 유저 입력 순서
      * @return 순서 업데이트 수행 결과 반환
      */
-    private boolean updateOrder(int userOrder) {
+    private boolean updateOrder(int targetOrder) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         int affected = 0;
@@ -178,7 +178,7 @@ public class BookMarkGroupService {
                         +" where view_order >= ?                ";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userOrder);
+            pstmt.setInt(1, targetOrder);
             affected = pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -198,7 +198,7 @@ public class BookMarkGroupService {
      * @param userOrder 생성하려는 북마크 그룹의 순서
      * @return 동일한 값이 존재하면 true, 없으면 false
      */
-    private boolean isOrderDuplicated(int userOrder) {
+    private boolean isOrderDuplicated(int targetOrder) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -211,7 +211,7 @@ public class BookMarkGroupService {
                         +" ) as row_exist           ";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userOrder);
+            pstmt.setInt(1, targetOrder);
 
             rs = pstmt.executeQuery();
             if (rs.next() && rs.getBoolean("row_exist")) return true;
