@@ -16,7 +16,7 @@
 
 <div class="nav">
   <a href="/">홈</a>
-  <a href="/history">위치 히스토리 목록</a>
+  <a href="/history.jsp">위치 히스토리 목록</a>
   <a href="/load-wifi">Open API 와이파이 정보 가져오기</a>
   <a href="/bookmark-list.jsp">즐겨찾기 보기</a>
   <a href="/bookmark-group.jsp">즐겨찾기 그룹 관리</a>
