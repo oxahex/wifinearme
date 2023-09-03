@@ -2,7 +2,7 @@
 <%@ page import="com.oxahex.wifinearme.dto.WifiDTO" %>
 <%@ page import="com.oxahex.wifinearme.util.EarthDistanceCalculator" %>
 <%@ page import="java.util.Objects" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
     <title>와이파이 정보</title>
