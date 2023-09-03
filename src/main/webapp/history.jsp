@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.oxahex.wifinearme.dto.HistoryDTO" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
   <title>위치 히스토리 목록</title>
