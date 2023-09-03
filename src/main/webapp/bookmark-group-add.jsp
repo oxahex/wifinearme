@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hyesech
-  Date: 2023/09/02
-  Time: 3:22 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
   <title>북마크 그룹 추가</title>
@@ -16,25 +9,27 @@
 
 <div class="nav">
   <a href="/">홈</a>
-  <a href="/history">위치 히스토리 목록</a>
+  <a href="/history.jsp">위치 히스토리 목록</a>
   <a href="/load-wifi">Open API 와이파이 정보 가져오기</a>
   <a href="/bookmark-list.jsp">즐겨찾기 보기</a>
   <a href="/bookmark-group.jsp">즐겨찾기 그룹 관리</a>
 </div>
 
-<table id="default-table">
-  <tr>
-    <th>북마크 이름</th>
-    <td></td>
-  </tr>
-  <tr>
-    <th>순서</th>
-    <td></td>
-  </tr>
-  <tr><td>현재 등록된 북마크 그룹이 없습니다. 북마크 그룹을 추가해주세요.</td></tr>
-
-</table>
-
+<form action="/add-bookmark-group" method="post">
+  <table id="default-table">
+    <tr>
+      <th><label for="name">북마크 이름</label></th>
+      <td><input type="text" id="name" name="name" /></td>
+    </tr>
+    <tr>
+      <th><label for="order">순서</label></th>
+      <td><input type="text" id="order" name="order" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: center" colspan="2"><button type="submit">추가</button></td>
+    </tr>
+  </table>
+</form>
 
 </body>
 </html>
