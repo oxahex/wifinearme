@@ -47,6 +47,11 @@ public class BookMarkGroupService {
         return affected == 1;
     }
 
+    /**
+     * 특정 북마크 그룹 정보 가져오기
+     * @param targetId 가져오려는 북마크 그룹 ID
+     * @return 북마크 그룹 객체 반환
+     */
     public BookmarkGroupDTO getBookmarkGroup(int targetId) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
@@ -126,7 +131,15 @@ public class BookMarkGroupService {
         return bookmarkGroupList;
     }
 
-    public boolean updateBookmarkGroup(int targetId, String targetName, int targetOrder, Timestamp targetTime) {
+    /**
+     * 기존 북마크 그룹 정보 수정
+     * @param targetId 변경하려는 북마크 그룹의 ID
+     * @param targetName 변경하고자 하는 북마크 그룹 이름
+     * @param targetOrder 변경하고자 하는 북마크 그룹 순서
+     * @param updateTimestamp 변경 시간
+     * @return 수정 성공 여부 반환
+     */
+    public boolean updateBookmarkGroup(int targetId, String targetName, int targetOrder, Timestamp updateTimestamp) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         int affected = 0;
@@ -141,7 +154,7 @@ public class BookMarkGroupService {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, targetName);
             pstmt.setInt(2, targetOrder);
-            pstmt.setTimestamp(3, targetTime);
+            pstmt.setTimestamp(3, updateTimestamp);
             pstmt.setInt(4, targetId);
 
             affected = pstmt.executeUpdate();
@@ -164,7 +177,7 @@ public class BookMarkGroupService {
 
     /**
      * 유저가 입력한 순서와 같거나 큰 행의 view_order + 1
-     * @param userOrder 유저 입력 순서
+     * @param targetOrder 유저 입력 순서
      * @return 순서 업데이트 수행 결과 반환
      */
     private boolean updateOrder(int targetOrder) {
@@ -195,7 +208,7 @@ public class BookMarkGroupService {
 
     /**
      * DB에 유저가 생성하고자 하는 북마크 그룹 순서와 동일한 순서가 있는지 확인
-     * @param userOrder 생성하려는 북마크 그룹의 순서
+     * @param targetOrder 생성하려는 북마크 그룹의 순서
      * @return 동일한 값이 존재하면 true, 없으면 false
      */
     private boolean isOrderDuplicated(int targetOrder) {
