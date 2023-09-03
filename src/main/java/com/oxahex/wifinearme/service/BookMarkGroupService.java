@@ -170,9 +170,35 @@ public class BookMarkGroupService {
         return affected == 1;
     }
 
-    public boolean deleteBookmarkGroup(BookmarkGroupDTO bookmarkGroup) {
+    /**
+     * 특정 북마크 그룹 삭제
+     * @param targetId 삭제하고자 하는 북마크 그룹 ID
+     * @return 삭제 성공 여부 반환
+     */
+    public boolean deleteBookmarkGroup(int targetId) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        int affected = 0;
 
-        return false;
+        try {
+            String sql = " delete from bookmark_group   "+"\n"
+                        +" where id = ?                  ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, targetId);
+
+            affected = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("deleteBookmarkGroup: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return affected == 1;
     }
 
     /**
