@@ -45,7 +45,11 @@
         <td><%=bookmarkGroup.getName()%></td>
         <td><%=bookmarkGroup.getOrder()%></td>
         <td><%=simpleDateFormat.format(bookmarkGroup.getCreateTimestamp())%></td>
-        <td><%=simpleDateFormat.format(bookmarkGroup.getUpdateTimestamp())%></td>
+        <td>
+          <% if (bookmarkGroup.getUpdateTimestamp() != null) { %>
+            <%=simpleDateFormat.format(bookmarkGroup.getUpdateTimestamp())%>
+          <% } %>
+        </td>
         <td style="text-align: center">
           <a class="bookmark-group-edit" href="/bookmark-group-edit.jsp?id=<%=bookmarkGroup.getId()%>">수정</a>
           <a class="bookmark-group-delete" href="/bookmark-group-delete.jsp?id=<%=bookmarkGroup.getId()%>">삭제</a>

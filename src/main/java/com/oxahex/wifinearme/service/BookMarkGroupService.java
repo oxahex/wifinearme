@@ -47,8 +47,45 @@ public class BookMarkGroupService {
         return affected == 1;
     }
 
+    public BookmarkGroupDTO getBookmarkGroup(int userId) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        BookmarkGroupDTO bookmarkGroup = null;
+
+        try {
+            String sql = " select *                "+"\n"
+                        +" from bookmark_group     "+"\n"
+                        +" where id = ?            ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, userId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int order = rs.getInt("view_order");
+                Timestamp createTimestamp = new Timestamp(rs.getLong("create_timestamp"));
+                long updateTime = rs.getLong("update_timestamp");
+                Timestamp updateTimestamp = updateTime > 0 ? new Timestamp(updateTime) : null;
+
+                bookmarkGroup = new BookmarkGroupDTO(id, name, order, createTimestamp, updateTimestamp);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(rs);
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return bookmarkGroup;
+    }
+
     /**
-     * 저장되어 있는 북마크 그룹 리스트를 가져옴
+     * 저장되어 있는 북마크 그룹 리스트 전체를 가져옴
      * @return 북마크 그룹 객체 리스트
      */
     public ArrayList<BookmarkGroupDTO> getBookmarkGroup() {
@@ -70,7 +107,8 @@ public class BookMarkGroupService {
                 String name = rs.getString("name");
                 int order = rs.getInt("view_order");
                 Timestamp createTimestamp = new Timestamp(rs.getLong("create_timestamp"));
-                Timestamp updateTimestamp = new Timestamp(rs.getLong("update_timestamp"));
+                long updateTime = rs.getLong("update_timestamp");
+                Timestamp updateTimestamp = updateTime > 0 ? new Timestamp(updateTime) : null;
 
                 BookmarkGroupDTO bookmarkGroup = new BookmarkGroupDTO(id, name, order, createTimestamp, updateTimestamp);
                 bookmarkGroupList.add(bookmarkGroup);
@@ -86,6 +124,42 @@ public class BookMarkGroupService {
         }
 
         return bookmarkGroupList;
+    }
+
+    public boolean updateBookmarkGroup(int id, String name, int order, Timestamp updateTimestamp) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        int affected = 0;
+
+        try {
+            if (isOrderDuplicated(order)) updateOrder(order);
+
+            String sql = " update bookmark_group                                "+"\n"
+                    +" set name = ?, view_order = ?, update_timestamp = ?       "+"\n"
+                    +" where id = ?                                             ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setInt(2, order);
+            pstmt.setTimestamp(3, updateTimestamp);
+            pstmt.setInt(4, id);
+
+            affected = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("updateBookmarkGroup: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return affected == 1;
+    }
+
+    public boolean deleteBookmarkGroup(BookmarkGroupDTO bookmarkGroup) {
+
+        return false;
     }
 
     /**

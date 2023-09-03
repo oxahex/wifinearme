@@ -23,7 +23,7 @@
     </tr>
     <tr>
       <th><label for="order">순서</label></th>
-      <td><input type="text" id="order" name="order" /></td>
+      <td><input type="number" id="order" name="order" /></td>
     </tr>
     <tr>
       <td style="text-align: center" colspan="2"><button type="submit">추가</button></td>
