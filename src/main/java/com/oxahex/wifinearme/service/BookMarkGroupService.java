@@ -3,9 +3,8 @@ package com.oxahex.wifinearme.service;
 import com.oxahex.wifinearme.db.DBManager;
 import com.oxahex.wifinearme.dto.BookmarkGroupDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class BookMarkGroupService {
 
@@ -41,4 +40,46 @@ public class BookMarkGroupService {
 
         return affected == 1;
     }
+
+    /**
+     * 저장되어 있는 북마크 그룹 리스트를 가져옴
+     * @return 북마크 그룹 객체 리스트
+     */
+    public ArrayList<BookmarkGroupDTO> getBookmarkGroup() {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        ArrayList<BookmarkGroupDTO> bookmarkGroupList = new ArrayList<>();
+
+        try {
+            String sql = " select * from bookmark_group     "+"\n"
+                        +" order by view_order              ";
+
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                int order = rs.getInt("view_order");
+                Timestamp createTimestamp = new Timestamp(rs.getLong("create_timestamp"));
+                Timestamp updateTimestamp = new Timestamp(rs.getLong("update_timestamp"));
+
+                BookmarkGroupDTO bookmarkGroup = new BookmarkGroupDTO(id, name, order, createTimestamp, updateTimestamp);
+                bookmarkGroupList.add(bookmarkGroup);
+            }
+        } catch (SQLException e) {
+            System.out.println("getBookmarkGroup: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(rs);
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return bookmarkGroupList;
+    }
+
 }

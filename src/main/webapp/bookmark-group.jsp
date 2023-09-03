@@ -1,3 +1,7 @@
+<%@ page import="com.oxahex.wifinearme.service.BookMarkGroupService" %>
+<%@ page import="com.oxahex.wifinearme.dto.BookmarkGroupDTO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -17,6 +21,12 @@
 
   <a href="/bookmark-group-add.jsp">북마크 그룹 이름 추가</a>
 
+  <%
+    BookMarkGroupService bookMarkGroupService = new BookMarkGroupService();
+    ArrayList<BookmarkGroupDTO> bookmarkGroupList = bookMarkGroupService.getBookmarkGroup();
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+  %>
+
   <table id="default-table">
     <tr>
       <th>ID</th>
@@ -26,7 +36,23 @@
       <th>수정 일자</th>
       <th>비고</th>
     </tr>
-    <tr><td colspan="6">현재 등록된 북마크 그룹이 없습니다. 북마크 그룹을 추가해주세요.</td></tr>
+    <% if (bookmarkGroupList.isEmpty()) { %>
+      <tr><td colspan="6">현재 등록된 북마크 그룹이 없습니다. 북마크 그룹을 추가해주세요.</td></tr>
+    <% } else { %>
+      <% for (BookmarkGroupDTO bookmarkGroup : bookmarkGroupList) { %>
+      <tr>
+        <td><%=bookmarkGroup.getId()%></td>
+        <td><%=bookmarkGroup.getName()%></td>
+        <td><%=bookmarkGroup.getOrder()%></td>
+        <td><%=simpleDateFormat.format(bookmarkGroup.getCreateTimestamp())%></td>
+        <td><%=simpleDateFormat.format(bookmarkGroup.getUpdateTimestamp())%></td>
+        <td style="text-align: center">
+          <a class="bookmark-group-edit" href="/bookmark-group-edit.jsp?id=<%=bookmarkGroup.getId()%>">수정</a>
+          <a class="bookmark-group-delete" href="/bookmark-group-delete.jsp?id=<%=bookmarkGroup.getId()%>">삭제</a>
+        </td>
+      </tr>
+      <% } %>
+    <% } %>
 
   </table>
 
