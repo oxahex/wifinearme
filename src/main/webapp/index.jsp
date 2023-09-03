@@ -24,7 +24,7 @@
   double lnt = userLnt != null ? Double.parseDouble(userLnt) : 0.0;
 %>
 
-<div id="location-form" >
+<div>
   <form action="/save-history" name="getWifiForm">
     <label>
       <input id="lat" type="text" value=<%=lat%> name="lat"/>
