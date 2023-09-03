@@ -18,11 +18,11 @@ public class AddBookmarkGroup extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
 
-        String bookmarkName = request.getParameter("name");
-        int bookmarkOrder = Integer.parseInt(request.getParameter("order"));
-        Timestamp now = new Timestamp(System.currentTimeMillis());
+        String name = request.getParameter("name");
+        int order = Integer.parseInt(request.getParameter("order"));
+        Timestamp createTimeStamp = new Timestamp(System.currentTimeMillis());
 
-        BookmarkGroupDTO bookmarkGroup = new BookmarkGroupDTO(null, bookmarkName, bookmarkOrder, now, null);
+        BookmarkGroupDTO bookmarkGroup = new BookmarkGroupDTO(null, name, order, createTimeStamp, null);
 
         BookMarkGroupService bookMarkGroupService = new BookMarkGroupService();
         boolean isSuccess = bookMarkGroupService.registerBookmarkGroup(bookmarkGroup);
