@@ -51,3 +51,8 @@ html {
 .history-delete {
     text-decoration: none;
 }
+
+/* select form */
+select option[value=""] [aria-disabled] {
+    display: none;
+}

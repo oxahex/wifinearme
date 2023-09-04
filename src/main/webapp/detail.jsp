@@ -2,6 +2,9 @@
 <%@ page import="com.oxahex.wifinearme.dto.WifiDTO" %>
 <%@ page import="com.oxahex.wifinearme.util.EarthDistanceCalculator" %>
 <%@ page import="java.util.Objects" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.oxahex.wifinearme.dto.BookmarkGroupDTO" %>
+<%@ page import="com.oxahex.wifinearme.service.BookMarkGroupService" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -25,6 +28,7 @@
 <%
     WifiService wifiService = new WifiService();
     WifiDTO wifi = wifiService.getWifi(userManageNo);
+    EarthDistanceCalculator calculator = new EarthDistanceCalculator();
 
     double lat = 0.0;
     double lnt = 0.0;
@@ -37,8 +41,27 @@
         }
     }
 
-    EarthDistanceCalculator calculator = new EarthDistanceCalculator();
+    BookMarkGroupService bookMarkGroupService = new BookMarkGroupService();
+    ArrayList<BookmarkGroupDTO> bookmarkGroupList = bookMarkGroupService.getBookmarkGroup();
+
 %>
+
+<form action="/add-bookmark" method="post">
+    <label for="bookmark-select"></label>
+    <select name="bookmark-group-id" id="bookmark-select" required>
+        <% if (bookmarkGroupList.isEmpty()) { %>
+            <option value="" selected disabled>등록된 북마크 그룹이 없습니다.</option>
+        <% } else { %>
+            <option value="" selected disabled>북마크 그룹 이름 선택</option>
+            <% for (BookmarkGroupDTO bookmarkGroup : bookmarkGroupList) { %>
+                <option value="<%=bookmarkGroup.getId()%>"><%=bookmarkGroup.getName()%></option>
+            <% }%>
+        <% } %>
+    </select>
+    <input type="hidden" id="wifi-select" name="wifi-manage-no" value="<%=wifi.getManageNo()%>" />
+    <button type="submit">즐겨찾기 추가하기</button>
+</form>
+
 
 <table id="default-table">
     <% if (wifi == null) { %>
