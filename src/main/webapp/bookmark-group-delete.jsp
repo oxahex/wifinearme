@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-<h1>북마크 그룹 삭</h1>
+<h1>북마크 그룹 삭제</h1>
 
 <div class="nav">
     <a href="/">홈</a>
