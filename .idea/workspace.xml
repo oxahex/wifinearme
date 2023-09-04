@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정">
+    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="feat: 북마크 목록 조회 기능 추가&#10;&#10;- 북마크 리스트 뷰 구현&#10;- 북마크 DTO 수정&#10;- 테이블 조인해서 북마크 데이터 가져오기 구현">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/DeleteBookmark.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/webapp/bookmark-delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db/wifinearme.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/wifinearme.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/dto/BookmarkDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/dto/BookmarkDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/BookMarkGroupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/BookMarkGroupService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/BookmarkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/BookmarkService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/bookmark-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bookmark-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bookmark-group-delete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bookmark-group-delete.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +44,8 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -441,7 +443,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693796768663</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="feat: 북마크 목록 조회 기능 추가&#10;&#10;- 북마크 리스트 뷰 구현&#10;- 북마크 DTO 수정&#10;- 테이블 조인해서 북마크 데이터 가져오기 구현">
+      <option name="closed" value="true" />
+      <created>1693799069277</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1693799069277</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,7 +459,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="index 페이지 작성&#10;&#10;- css 파일 작성&#10;- 기본 페이지 구성 골조 작업" />
     <MESSAGE value="내 위치 경도, 위도 가져오기 기능 js 구현" />
     <MESSAGE value="DB 생성 및 DB 연결 클래스 생성" />
     <MESSAGE value="Open API HTTP Request, Response 파싱" />
@@ -474,6 +483,7 @@
     <MESSAGE value="chore: 에디터 포맷팅 설정 변경으로 마지막 줄 제거되었음" />
     <MESSAGE value="chore: db 업데이트" />
     <MESSAGE value="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정" />
+    <MESSAGE value="feat: 북마크 목록 조회 기능 추가&#10;&#10;- 북마크 리스트 뷰 구현&#10;- 북마크 DTO 수정&#10;- 테이블 조인해서 북마크 데이터 가져오기 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 북마크 목록 조회 기능 추가&#10;&#10;- 북마크 리스트 뷰 구현&#10;- 북마크 DTO 수정&#10;- 테이블 조인해서 북마크 데이터 가져오기 구현" />
   </component>
 </project>

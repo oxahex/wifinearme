@@ -86,4 +86,76 @@ public class BookmarkService {
 
         return bookmarkList;
     }
+
+    /**
+     * 특정 ID의 북마크 정보 조회
+     * @param targetBookmarkId 조회 하고자 하는 북마크 ID
+     * @return 해당 ID와 일치 하는 북마크 객체 반환
+     */
+    public BookmarkDTO getBookmark(int targetBookmarkId) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        BookmarkDTO bookmark = null;
+
+        try {
+            String sql = " select  b.id, b.create_timestamp, bg.name, w.wifi_name   "+"\n"
+                        +" from bookmark as b                                       "+"\n"
+                        +" inner join bookmark_group as bg                          "+"\n"
+                        +" on b.fk_bookmark_group_id = bg.id                        "+"\n"
+                        +" inner join wifi as w                                     "+"\n"
+                        +" on b.fk_wifi_manage_no = w.manage_no                     "+"\n"
+                        +" where b.id = ?                                           ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, targetBookmarkId);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                int bookmarkId = rs.getInt("id");
+                Timestamp createTimestamp = new Timestamp(rs.getLong("create_timestamp"));
+                String bookmarkGroupName = rs.getString("name");
+                String wifiName = rs.getString("wifi_name");
+
+                bookmark = new BookmarkDTO(bookmarkId, bookmarkGroupName, wifiName, null, createTimestamp);
+            }
+        } catch (SQLException e) {
+            System.out.println("getBookmark: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(rs);
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return bookmark;
+    }
+
+    public boolean deleteBookmark(int targetBookmarkId) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        int affected = 0;
+
+        try {
+            String sql = " delete from bookmark     "+"\n"
+                        +" where id = ?             ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, targetBookmarkId);
+
+            affected = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("deleteBookmark: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return affected == 1;
+    }
 }
