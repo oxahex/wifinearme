@@ -1,10 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hyesech
-  Date: 2023/09/02
-  Time: 3:33 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.oxahex.wifinearme.service.BookmarkService" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.oxahex.wifinearme.dto.BookmarkDTO" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
@@ -22,6 +19,12 @@
   <a href="/bookmark-group.jsp">즐겨찾기 그룹 관리</a>
 </div>
 
+<%
+  BookmarkService bookmarkService = new BookmarkService();
+  ArrayList<BookmarkDTO> bookmarkList = bookmarkService.getBookmark();
+  SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+%>
+
 <table id="default-table">
   <tr>
     <th>ID</th>
@@ -30,7 +33,20 @@
     <th>등록 일자</th>
     <th>비고</th>
   </tr>
-  <tr><td colspan="5">정보가 존재하지 않습니다.</td></tr>
+
+  <% if (bookmarkList.isEmpty()) { %>
+    <tr><td colspan="5">정보가 존재하지 않습니다.</td></tr>
+  <% } else { %>
+    <% for (BookmarkDTO bookmark : bookmarkList) { %>
+      <tr>
+        <td><%=bookmark.getId()%></td>
+        <td><%=bookmark.getBookmarkGroupName()%></td>
+        <td><a href="/detail.jsp?manageNo=<%=bookmark.getWifiManageNo()%>"><%=bookmark.getWifiName()%></a></td>
+        <td><%=simpleDateFormat.format(bookmark.getCreateTimestamp())%></td>
+        <td style="text-align: center"><a href="/bookmark-delete.jsp?id=<%=bookmark.getId()%>">삭제</a></td>
+      </tr>
+    <% } %>
+  <% } %>
 
 </table>
 

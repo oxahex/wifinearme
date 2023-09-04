@@ -1,11 +1,10 @@
 package com.oxahex.wifinearme.service;
 
 import com.oxahex.wifinearme.db.DBManager;
+import com.oxahex.wifinearme.dto.BookmarkDTO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class BookmarkService {
 
@@ -41,5 +40,50 @@ public class BookmarkService {
         }
 
         return affected == 1;
+    }
+
+    /**
+     * 북마크 목록 가져오기
+     * @return 저장된 북마크 목록을 List로 반환
+     */
+    public ArrayList<BookmarkDTO> getBookmark() {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        ArrayList<BookmarkDTO> bookmarkList = new ArrayList<>();
+
+        try {
+            String sql = " select  b.id, b.create_timestamp, bg.name, w.wifi_name, w.manage_no   "+"\n"
+                        +" from bookmark as b                                                    "+"\n"
+                        +" inner join bookmark_group as bg                                       "+"\n"
+                        +" on b.fk_bookmark_group_id = bg.id                                     "+"\n"
+                        +" inner join wifi as w                                                  "+"\n"
+                        +" on b.fk_wifi_manage_no = w.manage_no                                  ";
+
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int bookmarkId = rs.getInt("id");
+                Timestamp createTimestamp = new Timestamp(rs.getLong("create_timestamp"));
+                String bookmarkGroupName = rs.getString("name");
+                String wifiName = rs.getString("wifi_name");
+                String wifiManageNo = rs.getString("manage_no");
+
+                BookmarkDTO bookmark = new BookmarkDTO(bookmarkId, bookmarkGroupName, wifiName, wifiManageNo, createTimestamp);
+                bookmarkList.add(bookmark);
+            }
+        } catch (SQLException e) {
+            System.out.println("getBookmark: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(rs);
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+
+        return bookmarkList;
     }
 }

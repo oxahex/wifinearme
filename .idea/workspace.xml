@@ -4,32 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="chore: db 업데이트">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db/wifinearme.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/LoadWifi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/SaveHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/db/DBManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/dto/HistoryDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/dto/WifiDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/HistoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/OpenApiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/WifiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/util/EarthDistanceCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/sqlite-jdbc-3.42.0.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/detail.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/history.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/HelloServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/bookmark-delete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/wifinearme.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/wifinearme.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/dto/BookmarkDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/dto/BookmarkDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/BookmarkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oxahex/wifinearme/service/BookmarkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/bookmark-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/bookmark-list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +42,8 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="JavaFXApplication" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -96,7 +76,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "android.gradle.sync.needed": "true",
-    "git-widget-placeholder": "main 병합 중",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/Users/hyesech/wifinearme/src/main/webapp/WEB-INF",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -453,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693634595872</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정">
+      <option name="closed" value="true" />
+      <created>1693796768663</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1693796768663</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +449,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="dependency 추가&#10;&#10;- lombok&#10;- okhttp3&#10;- gson" />
     <MESSAGE value="index 페이지 작성&#10;&#10;- css 파일 작성&#10;- 기본 페이지 구성 골조 작업" />
     <MESSAGE value="내 위치 경도, 위도 가져오기 기능 js 구현" />
     <MESSAGE value="DB 생성 및 DB 연결 클래스 생성" />
@@ -486,6 +473,7 @@
     <MESSAGE value="위치 detail 조회 기능 구현&#10;&#10;- detail 조회 페이지 생성&#10;- 사용자가 마지막으로 구한 위경도 값 브라우저 쿠키로 저장&#10;- 위경도 기반 두 위치 사이의 거리 계산하는 util 클래스 구현" />
     <MESSAGE value="chore: 에디터 포맷팅 설정 변경으로 마지막 줄 제거되었음" />
     <MESSAGE value="chore: db 업데이트" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: db 업데이트" />
+    <MESSAGE value="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 북마크 생성 기능 추가&#10;&#10;- detail 페이지에 북마크 선택 form 구현&#10;- 북마크 생성 서비스 코드 작성&#10;- 리다이렉션 구현&#10;- CSS 수정" />
   </component>
 </project>
