@@ -25,15 +25,16 @@ public class LoadWifi extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
 
-        // Hello
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
+        out.println("<html><body style=\"text-align: center\">");
         if (this.totalDataCount == 0) {
             out.println("<h1>이미 와이파이 정보가 저장되어 있거나 와이파이 정보를 저장하지 못했습니다. 다시 시도해주세요.</h1>");
         } else {
             out.println("<h1>" + this.totalDataCount + "개의 와이파이 정보를 성공적으로 저장했습니다.</h1>");
         }
+        out.println("<a href=\"/\">홈 으로 가기</a>");
         out.println("</body></html>");
     }
 
