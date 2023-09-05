@@ -39,6 +39,7 @@
         </tr>
         <tr>
             <td style="text-align: center" colspan="2">
+                <p>북마크 그룹을 삭제하는 경우 북마크 정보가 함께 삭제됩니다.</p>
                 <a href="/bookmark-group.jsp">돌아가기</a>
                 <span>|</span>
                 <button type="submit">삭제</button>

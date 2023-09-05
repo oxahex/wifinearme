@@ -181,6 +181,9 @@ public class BookMarkGroupService {
         int affected = 0;
 
         try {
+            BookmarkService bookmarkService = new BookmarkService();
+            bookmarkService.clearBookmark(targetId);
+
             String sql = " delete from bookmark_group   "+"\n"
                         +" where id = ?                  ";
 

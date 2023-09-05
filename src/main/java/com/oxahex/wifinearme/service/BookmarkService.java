@@ -158,4 +158,26 @@ public class BookmarkService {
 
         return affected == 1;
     }
+
+    public void clearBookmark(int targetBookmarkGroupId) {
+        Connection conn = DBManager.getConnection();
+        PreparedStatement pstmt = null;
+
+        try {
+            String sql = " delete from bookmark             "+"\n"
+                        +" where fk_bookmark_group_id = ?   ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, targetBookmarkGroupId);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("clearBookmark: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } finally {
+            DBManager.closeConnection(pstmt);
+            DBManager.closeConnection(conn);
+        }
+    }
 }
