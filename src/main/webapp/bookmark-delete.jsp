@@ -31,7 +31,7 @@
 <% if (bookmark == null) { %>
 <h2>존재하지 않는 북마크입니다.</h2>
 <% } else { %>
-<form action="/delete-bookmark" method="post">
+<form action="/bookmark-delete-submit.jsp" method="post" accept-charset="UTF-8">
     <input type="hidden" id="bookmark-id" name="id" value="<%=bookmark.getId()%>" readonly />
     <table id="default-table">
         <tr>
