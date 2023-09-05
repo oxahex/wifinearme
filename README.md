@@ -1,7 +1,8 @@
 # WI-FI NEAR ME
 
 1. [주요 기능](#주요-기능)
-2. [폴더 구조 및 메서드 상세](#폴더-구조-및-메서드-상세)
+2. [구현부 구조와 개요](#구현부-구조와-개요)
+3. [이렇게 구현한 이유 간략 설명 및 질문 정리](#이렇게-구현한-이유-간략-설명-및-질문-정리)
 
 <br />
 
@@ -43,82 +44,122 @@
 3. 북마크 삭제(POST)
 
 <br />
-<br />
 
-## 폴더 구조 및 메서드 상세
+## 구현부 구조와 개요
 
 ```text
-/src
-├── db			// DB 관련 클래스
-├── dto			// 데이터 정의 클래스
-├── service		// 기능 단위로 정의한 서비스 로직 구현부
-├── util		// 위경도 거리 계산 관련 유틸 클래스
-└── ...			// 서블릿 클래스		
-```
-
-### db
-```text
-└── db
-  └── DBManager.java
-```
-
-#### DBManager
-- getConnection()
-- closeConnection()
-
-<br />
-
-### dto
-```text
-└── dto
-  ├── BookmarkDTO.java
-  ├── BookmarkGroupDTO.java
-  ├── HistoryDTO.java
-  └── WifiDTO.java
-```
-
-#### BookmarkDTO
-#### BookmarkGroupDTO
-#### HistoryDTO
-#### WifiDTO
-
-<br />
-
-### service
-```text
-└── service
-  ├── BookMarkGroupService.java
-  ├── BookmarkService.java
-  ├── HistoryService.java
-  ├── OpenApiService.java
-  └── WifiService.java
-```
-#### BookmarkGroupService
-#### BookmarkService
-#### HistoryService
-#### OpenApiService
-#### WifiService
-
-<br />
-
-### util
-```text
+.
+├── AddBookmark.java                    // 북마크 추가 POST 요청 처리
+├── AddBookmarkGroup.java               // 북마크 그룹 추가 POST 요청 처리
+├── DeleteBookmark.java                 // 북마크 삭제 POST 요청 처리
+├── DeleteBookmarkGroup.java            // 북마크 그룹 삭제 POST 요청 처리
+├── DeleteHistory.java                  // 히스토리 삭제 GET 요청 처리
+├── EditBookmarkGroup.java              // 북마크 그룹 수정 POST 요청 처리
+├── LoadWifi.java                       // Open API 데이터 HTTP 요청 및 DB 저장 처리
+├── SaveHistory.java                    // 히스토리 저장 처리
+├── db
+│ └── DBManager.java                    // DB 연결, 연결 종료와 관련된 부분 구현
+├── dto
+│ ├── BookmarkDTO.java                  // 북마크 객체
+│ ├── BookmarkGroupDTO.java             // 북마크 그룹 객체
+│ ├── HistoryDTO.java                   // 히스토리 객체
+│ └── WifiDTO.java                      // 와이파이 객체
+├── service
+│ ├── BookMarkGroupService.java         // 북마크 그룹 관련 등록/조회/수정/삭제 로직
+│ ├── BookmarkService.java              // 북마크 관련 등록/조회/삭제 로직
+│ ├── HistoryService.java               // 히스토리 관련 등록/조회/삭제 로직
+│ ├── OpenApiService.java               // Open API HTTP 요청 로직
+│ └── WifiService.java                  // 와이파이 등록/조회 로직
 └── util
-    └── EarthDistanceCalculator.java
+    └── EarthDistanceCalculator.java    // 거리 계산 유틸
 ```
-#### EarthDistanceCalculator
 
 <br />
 
-### Servlet
-```text
-└── .
-  ├── AddBookmark.java
-  ├── AddBookmarkGroup.java
-  ├── DeleteBookmark.java
-  ├── DeleteBookmarkGroup.java
-  ├── DeleteHistory.java
-  ├── EditBookmarkGroup.java
-  ├── LoadWifi.java
-  └── SaveHistory.java
+## 이렇게 구현한 이유 간략 설명 및 질문 정리
+
+### DB
+#### DB Connection 객체를 하나만 생성하려면 어떻게 하면 될까요?
+
+DB 연결 객체를 하나만 생성해, DB 작업이 끝나면 연결 객체를 반환하도록 처리하도록 구현해보고 싶어서 getConnection() 메서드를 static으로 만들고, 여기서 connection을 생성해 반환하도록 했습니다.
+
+그런데 이렇게 하는 경우, 여러 명의 사용자가 동시에 connection을 생성할 때도 문제가 없을까요? DB 연결 부분을 실무에서는 어떻게 처리하는지 궁금합니다. 유저 식별값을 생성해서 유저 별로 connection을 하나씩 주나요?
+
+```java
+public class DBManager {
+   public static Connection getConnection() {
+      Connection connection = null;
+      try {
+         Class.forName(JDBC_DRIVER);
+         connection = DriverManager.getConnection(DB_FILE_PATH);
+      } catch (SQLException | ClassNotFoundException e) {
+         System.out.println("DBManager.getConnection(): " + e.getMessage());
+         e.printStackTrace();
+      }
+      
+      return connection;
+   }
+}
+```
+
+### DTO
+DTO를 실무에서 어떻게 정의하고, 사용하는지 아직 잘 모르지만 뷰단과 서비스단에서 데이터를 주고받기 용이할 것 같아 DTO라는 이름으로 필요한 주요 데이터 객체(와이파이, 북마크, 북마크 그룹, 히스토리)에 대한 정의를 클래스로 선언해두었습니다.
+
+### DTO 관련 질문
+
+#### DTO 필드 정의 시, 연결된 다른 객체가 있는 경우 필드를 어떻게 선언하는 것이 나을까요?
+
+현재 Bookmark에 대한 필드는 아래와 같이 정의되어 있는데, 지금 프로젝트에서는 북마크 조회 시 필요한 데이터는
+
+- 북마크 ID
+- 연결된 북마크 그룹 이름: 화면 출력
+- 연결된 Wi-Fi 이름: 화면 출력
+- Wi-Fi 관리번호: 와이파이 detail 페이지 이동
+
+정도라고 생각했습니다. 그래서 DTO를 아래와 같이 만들어주었습니다.
+
+```java
+public class BookmarkDTO { 
+    private Integer id;
+    private String bookmarkGroupName;
+    private String wifiName;
+    private String wifiManageNo;
+    private Timestamp createTimestamp;
+}
+```
+
+그런데 필요한 데이터만 고려하는 것이 아니라, 실제로 연결되어 있는 데이터를 DTO로 표현하려면 아래와 같이 정의하는 것이 좀 더 맞지 않을까 싶어서 질문 드립니다. 
+
+```java
+public class BookmarkDTO { 
+    private Integer id;
+    private BookmarkDTO bookmarkGroup;
+    private WifiDTO wifi;
+    private Timestamp createTimestamp;
+}
+```
+
+### Service 관련 질문
+
+#### DB에 저장된 정보를 가지고 값을 가공해 화면에 출력해야 하는 경우, DB에서 연산하는 것이 나은가요? 아니면 저장된 값을 그대로 가지고 와서 서비스 로직에서 가공하는 것이 나은가요?
+
+DB에 저장된 데이터를 어떻게 가공할지는 DB가 아니라 서비스 로직에서 구현해야 하는 부분인 것 같다는 생각이 듭니다.
+
+과제에서는 distance를 기준으로 20개 정렬 처리를 해야 해서, 정렬을 DB에서 해서 가져오도록 구현했는데(서비스 로직에서 구현하는 방법이 생각나지 않았습니다), 어떻게 하는 것이 좀 더 맞는 방법인가요?
+
+```java
+String sql = " select *,                                     "+"\n"
+           + " (                                             "+"\n"
+           + "   6371 *                                      "+"\n"
+           + "     acos(                                     "+"\n"
+           + "      cos(radians(?)) *                        "+"\n"
+           + "      cos(radians(lat)) *                      "+"\n"
+           + "      cos(radians(lnt) - radians(?)) +         "+"\n"
+           + "      sin(radians(?)) *                        "+"\n"
+           + "      sin(radians(lat))                        "+"\n"
+           + "    )                                          "+"\n"
+           + " ) as distance                                 "+"\n"
+           + " from wifi                                     "+"\n"
+           + " order by distance                             "+"\n"
+           + " limit ?                                       ";
 ```
