@@ -145,7 +145,7 @@ public class BookMarkGroupService {
         int affected = 0;
 
         try {
-            if (isOrderDuplicated(targetId)) updateOrder(targetId);
+            if (isOrderDuplicated(targetOrder)) updateOrder(targetOrder);
 
             String sql = " update bookmark_group                                "+"\n"
                     +" set name = ?, view_order = ?, update_timestamp = ?       "+"\n"
@@ -204,12 +204,10 @@ public class BookMarkGroupService {
     /**
      * 유저가 입력한 순서와 같거나 큰 행의 view_order + 1
      * @param targetOrder 유저 입력 순서
-     * @return 순서 업데이트 수행 결과 반환
      */
-    private boolean updateOrder(int targetOrder) {
+    private void updateOrder(int targetOrder) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
-        int affected = 0;
 
         try {
             String sql = " update bookmark_group                "+"\n"
@@ -218,7 +216,7 @@ public class BookMarkGroupService {
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, targetOrder);
-            affected = pstmt.executeUpdate();
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println("updateBookmarkGroupOrder: " + e.getMessage());
@@ -228,8 +226,6 @@ public class BookMarkGroupService {
             DBManager.closeConnection(pstmt);
             DBManager.closeConnection(conn);
         }
-
-        return affected == 1;
     }
 
     /**
