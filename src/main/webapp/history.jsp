@@ -33,7 +33,7 @@
   </tr>
 
   <% if (historyList.isEmpty()) { %>
-    <tr><td>근처 와이파이 조회 내역이 없습니다.</td></tr>
+    <tr><td colspan="5">근처 와이파이 조회 내역이 없습니다.</td></tr>
   <% } else { %>
     <% for (HistoryDTO history : historyList) { %>
       <tr>
@@ -41,7 +41,7 @@
         <td><%=history.getLat()%></td>
         <td><%=history.getLnt()%></td>
         <td><%=simpleDateFormat.format(history.getViewTimestamp())%></td>
-        <td style="text-align: center"><a class="history-delete" href="/delete-history?id=<%=history.getId()%>">삭제</a></td>
+        <td style="text-align: center"><a class="history-delete" href="/history-delete.jsp?id=<%=history.getId()%>">삭제</a></td>
       </tr>
     <% } %>
   <% } %>
