@@ -159,6 +159,10 @@ public class BookmarkService {
         return affected == 1;
     }
 
+    /**
+     * 북마크 그룹 삭제 시, 연결되어 있던 북마크 컬럼을 전부 삭제
+     * @param targetBookmarkGroupId 삭제할 북마크 그룹 ID
+     */
     public void clearBookmark(int targetBookmarkGroupId) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
