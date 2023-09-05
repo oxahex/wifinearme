@@ -25,7 +25,7 @@
 %>
 
 <div>
-  <form action="/save-history" name="getWifiForm">
+  <form action="/history-add.jsp" name="getWifiForm">
     <label>
       <input id="lat" type="text" value=<%=lat%> name="lat"/>
       <input id="lnt" type="text" value=<%=lnt%> name="lnt"/>

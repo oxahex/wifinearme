@@ -10,10 +10,10 @@ public class HistoryService {
 
     /**
      * 근처 Wi-Fi 조회 시, 조회 이력 저장
+     *
      * @param history 유저 조회 history 객체
-     * @return 저장 성공 여부 반환
      */
-    public boolean registerHistory(HistoryDTO history) {
+    public void registerHistory(HistoryDTO history) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         int affected = 0;
@@ -36,8 +36,6 @@ public class HistoryService {
             DBManager.closeConnection(pstmt);
             DBManager.closeConnection(conn);
         }
-
-        return affected == 1;
     }
 
     /**
