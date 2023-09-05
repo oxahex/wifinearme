@@ -5,11 +5,11 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
-  <title>북마크 그룹 목록</title>
+  <title>북마크 목록</title>
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-<h1>북마크 그룹 목록</h1>
+<h1>북마크 목록</h1>
 
 <div class="nav">
   <a href="/">홈</a>
