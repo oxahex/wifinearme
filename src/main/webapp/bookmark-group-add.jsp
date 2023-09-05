@@ -15,7 +15,7 @@
   <a href="/bookmark-group.jsp">즐겨찾기 그룹 관리</a>
 </div>
 
-<form action="/add-bookmark-group" method="post">
+<form action="/bookmark-group-add-submit.jsp" method="post" accept-charset="utf-8">
   <table id="default-table">
     <tr>
       <th><label for="name">북마크 이름</label></th>
