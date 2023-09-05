@@ -176,11 +176,6 @@ public class BookMarkGroupService {
      * @return 삭제 성공 여부 반환
      */
     public boolean deleteBookmarkGroup(int targetId) {
-        // TODO: 북마크 그룹 삭제 시, 여기에 연결된 북마크가 있는 경우, 북마크 테이블의 무결성이 꺠지게 되지 않나?
-        //  그럼 북마크 그룹 정보가 없는 북마크 테이블 컬럼이 생길 것 같음.
-        //  북마크를 가져올 때 join을 하게 되면 어차피 inner join을 하니까 북마크 그룹 정보가 없는 컬럼을
-        //  가져오지는 않겠지만, DB 상에는 데이터가 계속 남아있게 될 것 같다. 맞는지? 아닌지? 어떻게 해결하는지?
-
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         int affected = 0;

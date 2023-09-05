@@ -4,13 +4,7 @@ import java.sql.*;
 
 public class DBManager {
     private static final String JDBC_DRIVER = "org.sqlite.JDBC";
-
-    // TODO: 파일 패스를 이렇게 고정해두면, 다른 사람이 이 파일을 열었을 때 경로를 못찾지 않나? 해결 필요
     private static final String DB_FILE_PATH = "jdbc:sqlite:/Users/hyesech/wifinearme/src/db/wifinearme.db";
-
-    /**
-     * Driver 로드
-     * */
     public DBManager() {}
 
     /**
@@ -21,7 +15,6 @@ public class DBManager {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_FILE_PATH);
-            // TODO: 로그를 남기는 부분 공부 후 추가 여부 판단
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("DBManager.getConnection(): " + e.getMessage());
             e.printStackTrace();

@@ -13,16 +13,6 @@ import java.util.Objects;
 public class WifiService {
 
     /**
-     * Wi-Fi 정보 등록
-     * @param wifi Wi-Fi 정보
-     * @return 성공 여부
-     */
-    public boolean registerWifi(WifiDTO wifi) {
-
-        return false;
-    }
-
-    /**
      * Wi-Fi 정보 여러 개 등록
      * @param wifiList Wi-Fi 정보 List
      * @return 성공 여부
@@ -150,12 +140,6 @@ public class WifiService {
         ResultSet rs = null;
         ArrayList<WifiDTO> wifiList = new ArrayList<>();
 
-        /*
-            TODO: 여기서 sql에서 거리를 구하도록 해서 데이터를 가져오는 게 비용이 더 나은지?
-            아니면 DB에 저장된 테이블대로 가져오고, 여기서 값을 계산하면서 PriorityQueue 등으로
-            정렬하고 20개 잘라서 반환하는 것이 나은지?
-         */
-
         try {
             String sql = " select *,                                     "+"\n"
                        + " (                                             "+"\n"
@@ -220,27 +204,4 @@ public class WifiService {
 
         return wifiList;
     }
-
-//    private boolean checkDataExist() {
-//        Connection conn = DBManager.getConnection();
-//        PreparedStatement pstmt = null;
-//        ResultSet rs = null;
-//
-//
-//        try {
-//            String sql = " select exists(select * from wifi) ";
-//            pstmt = conn.prepareStatement(sql);
-//            rs = pstmt.executeQuery();
-//
-//        } catch (SQLException e) {
-//            System.out.println("checkDataExist: " + e.getMessage());
-//            e.printStackTrace();
-//            throw new RuntimeException(e);
-//        } finally {
-//            DBManager.closeConnection(pstmt);
-//            DBManager.closeConnection(rs);
-//        }
-//
-//        return false;
-//    }
 }

@@ -28,12 +28,3 @@ public class WifiDTO {
     private double lat;                         // LAT                      위도
     private String workDate;                    // WORK_DTTM                작업 일자
 }
-
-
-/*
-    TODO: Double, double 타입 혼용?
-    double 의 경우 nullable 선언이 안 돼서 Double 타입으로 선언했는데
-    혼용해서 써도 무방한지?
-    - distance 필드: DB에 저장하지 않고 조회 시에 동적으로 값을 생성
-    - lnt, lat 필드: nullable 이 아님.
- */

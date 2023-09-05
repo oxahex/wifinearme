@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="chore: 데이터베이스 변경점" />
+    <list default="true" id="553f3fb4-5d57-42e0-a433-c1074324e823" name="변경" comment="README: 제목 수정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +43,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "oxahex"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5a35346b-7532-453c-9b80-7191d05c5053" />
+        <option name="url" value="https://github.com/oxahex/wifinearme.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -486,7 +500,31 @@
       <option name="project" value="LOCAL" />
       <updated>1693809725572</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="fix: get 방식 한글 깨짐 문제 수정">
+      <option name="closed" value="true" />
+      <created>1693810245481</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1693810245481</updated>
+    </task>
+    <task id="LOCAL-00037" summary="chore: DB 테이블 데이터 제거">
+      <option name="closed" value="true" />
+      <created>1693810951972</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1693810951972</updated>
+    </task>
+    <task id="LOCAL-00038" summary="README: 제목 수정">
+      <option name="closed" value="true" />
+      <created>1693811777301</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1693811777301</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,9 +532,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="index 페이지 와이파이 데이터 로드&#10;&#10;- wifi table 데이터 존재 여부 확인&#10;- 존재하는 경우에 table 생성" />
-    <MESSAGE value="Open API 가져오기 기능 추가&#10;&#10;- Open API 데이터 HTTP 요청&#10;- wifi 데이터 DB 저장 요청&#10;- 결과에 따라 다른 html 생성" />
-    <MESSAGE value="idea 파일 변경" />
     <MESSAGE value="오류 원인 html 기재" />
     <MESSAGE value="사용자 LAT, LNT 값 입력 연동" />
     <MESSAGE value="chore: 사용자 입력 위경도 파라미터 위치 변경" />
@@ -519,6 +554,9 @@
     <MESSAGE value="chore: 의문점" />
     <MESSAGE value="README: README 파일 업데이트" />
     <MESSAGE value="chore: 데이터베이스 변경점" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: 데이터베이스 변경점" />
+    <MESSAGE value="fix: get 방식 한글 깨짐 문제 수정" />
+    <MESSAGE value="chore: DB 테이블 데이터 제거" />
+    <MESSAGE value="README: 제목 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="README: 제목 수정" />
   </component>
 </project>
