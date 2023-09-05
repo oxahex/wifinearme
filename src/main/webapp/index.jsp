@@ -14,7 +14,7 @@
 <div class="nav">
   <a href="/">홈</a>
   <a href="/history.jsp">위치 히스토리 목록</a>
-  <a href="/load-wifi">Open API 와이파이 정보 가져오기</a>
+  <a href="/load-wifi.jsp">Open API 와이파이 정보 가져오기</a>
 </div>
 
 <%
@@ -65,7 +65,7 @@
   <% if (listSize == 0) { %>
     <tr><td colspan="17">와이파이 정보를 가져온 후 실행해주세요.</td></tr>
   <% } else if (lat == 0.0 && lnt == 0.0) { %>
-    <tr><td colspan="17">내 위치 가져오기를 실행 한 후 검색해주세요.</td></tr>
+    <tr><td colspan="17">와이파이 정보가 데이터베이스에 저장되어 있습니다. 내 위치 가져오기를 실행 한 후 검색해주세요.</td></tr>
   <% } else { %>
     <% for (WifiDTO wifi : wifiList) { %>
       <tr>
