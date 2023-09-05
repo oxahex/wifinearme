@@ -45,18 +45,10 @@
 
 <br />
 
-## 구현부 구조와 개요
+## 구현부 구조와 개요(.jsp 파일 제외 .java 파일)
 
 ```text
 .
-├── AddBookmark.java                    // 북마크 추가 POST 요청 처리
-├── AddBookmarkGroup.java               // 북마크 그룹 추가 POST 요청 처리
-├── DeleteBookmark.java                 // 북마크 삭제 POST 요청 처리
-├── DeleteBookmarkGroup.java            // 북마크 그룹 삭제 POST 요청 처리
-├── DeleteHistory.java                  // 히스토리 삭제 GET 요청 처리
-├── EditBookmarkGroup.java              // 북마크 그룹 수정 POST 요청 처리
-├── LoadWifi.java                       // Open API 데이터 HTTP 요청 및 DB 저장 처리
-├── SaveHistory.java                    // 히스토리 저장 처리
 ├── db
 │ └── DBManager.java                    // DB 연결, 연결 종료와 관련된 부분 구현
 ├── dto
