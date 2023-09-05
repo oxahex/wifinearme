@@ -46,7 +46,7 @@
 
 %>
 
-<form action="/add-bookmark" method="post">
+<form action="/bookmark-add-submit.jsp" method="post" accept-charset="UTF-8">
     <label for="bookmark-select"></label>
     <select name="bookmark-group-id" id="bookmark-select" required>
         <% if (bookmarkGroupList.isEmpty()) { %>
