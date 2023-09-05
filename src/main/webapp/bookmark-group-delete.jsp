@@ -26,7 +26,7 @@
 <% if (bookmarkGroup == null) { %>
 <h2>존재하지 않는 북마크 그룹입니다.</h2>
 <% } else { %>
-<form action="/delete-bookmark-group" method="post">
+<form action="/bookmark-group-delete-submit.jsp" method="post" accept-charset="UTF-8">
     <input type="hidden" id="id" name="id" value="<%=bookmarkGroup.getId()%>" readonly />
     <table id="default-table">
         <tr>
