@@ -76,10 +76,10 @@ public class WifiService {
 
     /**
      * 특정 Wi-Fi 정보를 가져옴
-     * @param userManageNo Wi-Fi 관리 번호
+     * @param targetManageNo Wi-Fi 관리 번호
      * @return 해당 Wi-Fi 정보
      */
-    public WifiDTO getWifi(String userManageNo) {
+    public WifiDTO getWifi(String targetManageNo) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -90,7 +90,7 @@ public class WifiService {
             String sql = " select * from wifi where manage_no = ? ";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, userManageNo);
+            pstmt.setString(1, targetManageNo);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -130,11 +130,11 @@ public class WifiService {
     /**
      * limit 개의 Wi-Fi 정보를 사용자 현 위치 기준 가까운 순으로 정렬해 가져옴
      * @param limit 가져올 Wi-Fi 개수 최댓값
-     * @param userLat 사용자 입력 위도
-     * @param userLnt 사용자 입력 경도
+     * @param targetLat 사용자 입력 위도
+     * @param targetLnt 사용자 입력 경도
      * @return lnt, lat를 기준으로 가장 가까운 Wi-Fi 정보를 최대 limit 개 반환
      */
-    public ArrayList<WifiDTO> getWifi(int limit, double userLat, double userLnt) {
+    public ArrayList<WifiDTO> getWifi(int limit, double targetLat, double targetLnt) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -157,9 +157,9 @@ public class WifiService {
                        + " limit ?                                       ";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, Double.toString(userLat));
-            pstmt.setString(2, Double.toString(userLnt));
-            pstmt.setString(3, Double.toString(userLat));
+            pstmt.setString(1, Double.toString(targetLat));
+            pstmt.setString(2, Double.toString(targetLnt));
+            pstmt.setString(3, Double.toString(targetLat));
             pstmt.setString(4, Integer.toString(limit));
 
             rs = pstmt.executeQuery();
@@ -188,7 +188,6 @@ public class WifiService {
                         installFloor, installType, installAgency, serviceType,
                         netType, installYear, installPlace, netEnv, lnt, lat, workDate
                 );
-
 
                 wifiList.add(wifi);
             }

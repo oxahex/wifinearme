@@ -10,13 +10,11 @@ public class HistoryService {
 
     /**
      * 근처 Wi-Fi 조회 시, 조회 이력 저장
-     *
      * @param history 유저 조회 history 객체
      */
     public void registerHistory(HistoryDTO history) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
-        int affected = 0;
 
         try {
             String sql = " insert into history ( lat, lnt, view_timestamp ) "+"\n"
@@ -27,7 +25,7 @@ public class HistoryService {
             pstmt.setDouble(2, history.getLnt());
             pstmt.setTimestamp(3, history.getViewTimestamp());
 
-            affected = pstmt.executeUpdate();
+            pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("registerHistory: " + e.getMessage());
             e.printStackTrace();
@@ -81,10 +79,10 @@ public class HistoryService {
 
     /**
      * 특정 조회 내역 삭제
-     * @param userHistoryId 삭제하고자 하는 조회 내역의 id
+     * @param targetHistoryId 삭제하고자 하는 조회 내역의 id
      * @return 삭제 성공 여부를 반환
      */
-    public boolean deleteHistory(int userHistoryId) {
+    public boolean deleteHistory(int targetHistoryId) {
         Connection conn = DBManager.getConnection();
         PreparedStatement pstmt = null;
         int affected = 0;
@@ -92,7 +90,7 @@ public class HistoryService {
         try {
             String sql = " delete from history where id = ? ";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userHistoryId);
+            pstmt.setInt(1, targetHistoryId);
 
             affected = pstmt.executeUpdate();
         } catch (SQLException e) {

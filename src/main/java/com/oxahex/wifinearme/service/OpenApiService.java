@@ -40,13 +40,11 @@ public class OpenApiService {
                 if (page != limit) end = page * 1000;
                 else end = totalDataCount;
 
-                System.out.println("page" + page + ", start: " + start + ", end: " + end);
-
                 JsonObject json = requestHTTP(start, end);
                 JsonArray jsonArray = json.get("row").getAsJsonArray();
 
-                for (JsonElement j : jsonArray) {
-                    JsonObject data = j.getAsJsonObject();
+                for (JsonElement je : jsonArray) {
+                    JsonObject data = je.getAsJsonObject();
 
                     String manageNo = data.get("X_SWIFI_MGR_NO").getAsString();
                     String district = data.get("X_SWIFI_WRDOFC").getAsString();
